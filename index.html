@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>can games</title>
+    <!-- Default favicon (looks like Google Drive to blend in) -->
+    <link id="favicon" rel="icon" type="image/x-icon" href="https://ssl.gstatic.com/images/branding/product/1x/drive_2020q4_32dp.png">
+    <link rel="stylesheet" href="style.css">
+    <!-- Load Ultraviolet Web Proxy Core Scripts -->
+    <script src="uv/uv.bundle.js"></script>
+    <script src="uv/uv.config.js"></script>
+</head>
+<body>
+    <!-- Main Dashboard -->
+    <div id="app-container">
+        <header>
+            <div class="logo">
+                <span class="dot"></span> can games
+            </div>
+            <nav class="nav-tabs">
+                <button class="nav-tab active" data-view="home">home</button>
+                <button class="nav-tab" data-view="library">library</button>
+            </nav>
+            <div class="header-actions">
+                <button id="panic-btn" class="text-btn" title="Press ESC at any time to panic">panic [esc]</button>
+            </div>
+        </header>
+
+        <main>
+            <!-- Home View (Stealth Start Page) -->
+            <section id="home-view" class="view-panel">
+                <div class="clock-container">
+                    <div id="digital-clock">00:00:00</div>
+                    <div id="current-date">Monday, January 1</div>
+                </div>
+                
+                <div class="search-box-container">
+                    <input type="text" id="web-search-input" placeholder="Search..." autocomplete="off">
+                </div>
+            </section>
+
+            <!-- Library View (Game Index/Add Dashboard) -->
+            <section id="library-view" class="view-panel hidden">
+                <div class="library-header">
+                    <h2>Library</h2>
+                    <button id="add-game-toggle" class="text-btn">+ add game</button>
+                </div>
+
+                <!-- Add Game Inline Panel -->
+                <div id="add-game-form" class="add-game-section hidden">
+                    <div class="form-row">
+                        <input type="text" id="new-game-title" placeholder="game title..." autocomplete="off">
+                        <input type="text" id="new-game-url" placeholder="game embed URL..." autocomplete="off">
+                        <select id="new-game-category">
+                            <option value="arcade">Arcade</option>
+                            <option value="puzzle">Puzzle</option>
+                            <option value="sports">Sports</option>
+                            <option value="classic">Classic</option>
+                        </select>
+                        <div class="form-buttons">
+                            <button id="save-game-btn" class="text-btn">save</button>
+                            <button id="cancel-game-btn" class="text-btn">cancel</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Search & Filters -->
+                <div class="search-section">
+                    <input type="text" id="search-input" placeholder="search library..." autocomplete="off">
+                    <div class="category-filters">
+                        <button class="filter-btn active" data-category="all">All</button>
+                        <button class="filter-btn" data-category="arcade">Arcade</button>
+                        <button class="filter-btn" data-category="puzzle">Puzzle</button>
+                        <button class="filter-btn" data-category="sports">Sports</button>
+                        <button class="filter-btn" data-category="classic">Classic</button>
+                    </div>
+                </div>
+
+                <!-- Games Grid -->
+                <div class="games-section">
+                    <div id="games-grid" class="games-grid">
+                        <!-- Games will be injected here dynamically by main.js -->
+                    </div>
+                    <div id="no-results" class="hidden">
+                        <!-- Controlled dynamically by main.js -->
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- Fullscreen Game Play Interface -->
+    <div id="game-player" class="hidden">
+        <div class="player-controls">
+            <button id="close-game-btn" class="text-btn">&larr; back to library</button>
+            <span id="playing-title">Game Title</span>
+            <button id="player-panic-btn" class="text-btn">panic [esc]</button>
+        </div>
+        <div class="iframe-container">
+            <iframe id="game-frame" name="game-frame" src="" frameborder="0" allowfullscreen></iframe>
+        </div>
+    </div>
+
+    <script src="main.js"></script>
+</body>
+</html>

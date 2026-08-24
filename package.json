@@ -1,0 +1,14 @@
+{
+  "name": "can-games",
+  "version": "1.0.0",
+  "description": "Ultra-minimalist unblocked games website with Ultraviolet proxy.",
+  "type": "module",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "@tomphttp/bare-server-node": "^2.0.1",
+    "express": "^4.19.2"
+  }
+}
