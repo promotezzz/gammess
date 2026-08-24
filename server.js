@@ -10,12 +10,12 @@ const __dirname = dirname(__filename);
 const app = express();
 const bare = createBareServer('/bare/');
 
-// Serve static site assets
-app.use(express.static(__dirname));
+// Serve static site assets from the public folder
+app.use(express.static(join(__dirname, 'public')));
 
 // Fallback to index.html for SPA routing/scope issues
 app.use((req, res, next) => {
-    res.status(404).sendFile(join(__dirname, 'index.html'));
+    res.status(404).sendFile(join(__dirname, 'public', 'index.html'));
 });
 
 const server = createServer();
