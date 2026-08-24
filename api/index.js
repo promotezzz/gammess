@@ -3,7 +3,6 @@ import { createBareServer } from '@tomphttp/bare-server-node';
 const bare = createBareServer('/bare/');
 
 export default function handler(req, res) {
-    // Check if the request is a Bare server request
     if (bare.shouldRoute(req)) {
         bare.routeRequest(req, res);
     } else {
@@ -11,3 +10,12 @@ export default function handler(req, res) {
         res.end('Not Found');
     }
 }
+
+// Disable body parsing so that raw request stream is proxied correctly, 
+// and enable externalResolver to handle async requests.
+export const config = {
+    api: {
+        bodyParser: false,
+        externalResolver: true,
+    },
+};
